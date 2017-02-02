@@ -3,13 +3,6 @@
 - hosts: all
   become: True
 
-  pre_tasks:
-    - name: Check vars
-      debug:
-        var:
-          - inventory_hostname
-          - ansible_host
-
   roles:
     - role: midonet-repo
 
@@ -20,4 +13,4 @@
   post_tasks:
     - name: Check id
       debug:
-        var: hostvars['ubuntu']['myid']
+        var: hostvars['{{ inventory_hostname }}']['myid']
