@@ -6,7 +6,10 @@
   pre_tasks:
     - name: Check vars
       debug:
-        var: inventory_hostname
+        var:
+          - inventory_hostname
+          - ansible_host
+
   roles:
     - role: midonet-repo
 
